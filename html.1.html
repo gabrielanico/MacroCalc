@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Macros</title>
+    <style>
+        /* Estilos para el menú principal */
+.main-menu {
+    width: 100%;
+    background-color: #800000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.main-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-menu li {
+    margin: 0 15px;
+}
+
+.main-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.main-menu a:hover {
+    background-color: #660000;
+}
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f8fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Estilo de la sección de bienvenida */
+        .welcome-section {
+            width: 100%;
+            padding: 150px 70px;
+            background-image: url(./cbum2.jpeg); /* Cambia 'tu-imagen-de-fondo.jpg' por el URL de tu imagen */
+            background-size: cover;
+            background-position: center;
+            color:white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .welcome-section h1 {
+            font-size: 40px;
+            color: #f8f8f8;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            margin: 0;
+        }
+
+        .welcome-box {
+            background: rgba(80, 9, 9, 0.8);
+            border: 2px solid #000;
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            color: #fff;
+        }
+
+        .welcome-section p {
+            font-size: 20px;
+            margin-top: 10px;
+            color: white;
+        }
+
+        /* Estilo del contenedor principal */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            background: #801f0e;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+
+        /* Estilo del formulario */
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 25px;
+            color: #ffffff;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #f5f5f5;
+        }
+
+        .radio-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: #ffffff;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000;
+            color: #f8f8f8;
+            border: 2px solid #801f0e;
+            border-radius: 4px;
+            font-size: 26px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        /* Estilo de la sección de conceptos */
+        .concepts-section {
+            padding: 20px;
+            background-color: #ffffff;
+            text-align: left;
+            color: #333;
+            max-width: 800px;
+            margin-top: 50px;
+            border-radius: 8px;
+        }
+
+        .concepts-section h2 {
+            color: #801f0e;
+            font-size: 20px;
+            text-align: center;
+            text-shadow: 4px 4px 6px rgba(12, 9, 9, 0.3);
+        }
+
+        .concept {
+            padding: 15px;
+            margin: 10px;
+            border: 2px solid #801f0e;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            color: #333;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .concept h3 {
+            color: #801f0e;
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .concept p {
+            color: #555;
+            font-size: 20px;
+        }
+        .concept img {
+    display: block;         /* Hace que la imagen se comporte como un bloque, permitiendo usar margin auto */
+    margin: 0 auto;         /* Centra la imagen horizontalmente */
+    max-width: 100%;        /* La imagen ocupará el ancho completo del contenedor, pero sin excederlo */
+    height: auto;           /* Mantiene la relación de aspecto de la imagen */
+    max-height: 150px;      /* Ajusta la altura máxima según sea necesario */
+    border-radius: 4px;     /* Bordes redondeados opcionales */
+    margin-bottom: 10px;    /* Espacio entre la imagen y el texto */
+    object-fit: cover;      /* Asegura que la imagen llene el espacio sin deformarse */
+}
+    </style>
+</head>
+<body>
+    <!-- Menú de Navegación -->
+<nav class="main-menu">
+    <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="about.html">Calculadora de macros</a></li>
+        <li><a href="services.html">Conceptos que debes conocer </a></li>
+        <li><a href="comentario.html">Comentarios</a></li>
+    </ul>
+</nav>
+    <!-- Sección de Bienvenida -->
+    <div class="welcome-section">
+        <div class="welcome-box">
+            <h1>Calculadora de Macros y Calorias</h1>
+            <p>Calcula tu metabolismo basal y los macros necesarios para alcanzar tus objetivos de fitness.</p>
+        </div>
+    </div>
+
+    <!-- Sección de la Calculadora -->
+    <div class="container calculator-section" id="calculator">
+        <h1>Calcula tus macros</h1>
+        
+        <label>Género:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="genero" value="mujer" checked> Mujer</label>
+            <label><input type="radio" name="genero" value="hombre"> Hombre</label>
+        </div>
+        
+        <label>Edad:</label>
+        <input type="number" id="edad" placeholder="Edad en años">
+        
+        <label>Peso (kg):</label>
+        <input type="number" id="peso" placeholder="Peso en kg">
+        
+        <label>Altura (cm):</label>
+        <input type="number" id="altura" placeholder="Altura en cm">
+        
+        <label>Nivel de actividad física:</label>
+        <select id="actividad">
+            <option value="1.2">Sedentario (Poco o nada de ejercicio) </option>
+            <option value="1.375">Ligeramente Activo (Ejercicio 1-2 días a la semana.)</option>
+            <option value="1.55">Moderadamente Activo (Ejercicio 3-5 días a la semana.)</option>
+            <option value="1.725">Muy Activo (Ejercicio 6-7 días a la semana.)</option>
+            <option value="1.9">Extremadamente Activo (Ejercicio 6-7 días a la semana más un trabajo activo.)</option>
+        </select>
+        
+        <label>Objetivo:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="objetivo" value="definicion" checked> Definición</label>
+            <label><input type="radio" name="objetivo" value="volumen"> Volumen</label>
+        </div>
+        
+        <button onclick="calcularMacros()">Calcular</button>
+        
+        <div class="result" id="resultado"></div>
+    </div>
+
+    <!-- Sección de Conceptos -->
+    <div class="concepts-section">
+        <h2>CONCEPTOS QUE DEBES CONOCER</h2>
+        <div class="concept"><img src="./deficit1.png" alt="DEFICIT"><h3>DÉFICIT</h3><p>Son las calorías que te hacen falta para alcanzar un estado de mantenimiento.
+                Cuando estás en déficit, quemas más energía de la que consumes.</p></div>
+        <div class="concept"><img src="./superhabir.jpg" alt="SUPERHÁBIT"><h3>SUPERHÁBIT</h3><p>Son las calorías que estás consumiendo de más una vez superado el estado de mantenimiento. Cuando estás en déficit estás quemando menos energía de la que consumes.</p></div>
+        <div class="concept"><img src="./mantenimiento.png" alt="MANTENIMIENTO"><h3>MANTENIMIENTO</h3><p>Lo comido por lo servido. Estar en mantenimiento es lo que ocurre cuando quemas prácticamente la misma cantidad de calorías de las que consumes.</p></div>
+        <div class="concept"><img src="./NEAT.jfif" alt="NEAT"><h3>NEAT</h3><p>Es el conjunto de actividades cotidianas no deportivas, como andar, subir escaleras o poner el lavavajillas. Cuanto más alto sea tu NEAT más calorías quemarás al día.</p></div>
+        <div class="concept"><img src="./MACROS.avif" alt="MACROS"><h3>MACROS</h3><p>Son las proteínas, los carbohidratos y las grasas, los tres macronutrientes que necesita tu cuerpo para sobrevivir. Cada uno tiene una función que es regulada por el sistema hormonal.</p></div>
+        <div class="concept"><img src="./MICRO.jpeg" alt="MICRO"><h3>MICROS</h3><p>Son el resto de nutrientes que nuestro cuerpo necesita para vivir y realizar sus procesos de forma efectiva: vitaminas (hidrosolubles y liposolubles), minerales y oligoelementos</p></div>
+        <div class="concept"><img src="./IMC.jfif" alt="IMC"><h3>IMC</h3><p>Sencilla métrica que nos permite saber con facilidad si estamos por encima o por debajo de nuestro peso ideal. No hay que obsesionarse porque sin contexto no tiene valor.</p></div>
+        <div class="concept"><img src="./TBM.jpg" alt="TMB"><h3>TMB</h3><p>Es el número de calorías más o menos exacto que necesita tu cuerpo para sobrevivir. No incluye la cantidad de calorías quemadas en la actividad diaria de una persona.</p></div>
+        <div class="concept"><img src="./GRASAS.png" alt="GRASAS"><h3>GRASA</h3><p>La grasa es uno de los tres macronutrientes: tiene una función de gran relevancia en la regulación hormonal. Mejor priorizar las grasas poliinsaturadas y monoinsaturadas.</p></div>
+        <div class="concept"><img src="./PROTEINA.webp" alt="PROTEINA"><h3>PROTEINA</h3><p>Las proteínas son uno de los tres macronutrientes: su función es proveer al cuerpo de la materia prima necesaria para desarrollar, construir y reparar la masa muscular.</p></div>
+        <div class="concept"><img src="./CARBOHIDRATOS.webp" alt="CARBOHIDRATOS"><h3>CARBOHIDRATOS</h3><p>Los carbohidratos son uno de los tres macronutrientes: energía de alta disponibilidad.
+             Sin carbohidratos nuestro cuerpo entra en estado de cetosis.</p></div>
+        <div class="concept"><img src="./CALORIAS.jpg" alt="CALORIAS"><h3>CALORIAS</h3><p>La palabra caloría se refiere al número de kilocalorías (kcal). Las grasas 
+            contienen 9 kcal/g. Los carbohidratos y proteínas contienen aproximadamente 4 kcal/g.</p></div>
+    </div>
+</div>
+
+<script>
+    function calcularMacros() {
+        // Obtener datos del usuario
+        const genero = document.querySelector('input[name="genero"]:checked').value;
+        const edad = parseInt(document.getElementById("edad").value);
+        const peso = parseFloat(document.getElementById("peso").value);
+        const altura = parseInt(document.getElementById("altura").value);
+        const actividad = parseFloat(document.getElementById("actividad").value);
+        const objetivo = document.querySelector('input[name="objetivo"]:checked').value;
+        
+        // Validar que los campos tengan valores
+        if (isNaN(edad) || isNaN(peso) || isNaN(altura)) {
+            alert("Por favor, completa todos los campos.");
+            return;
+        }
+        
+        // Calcular Tasa Metabólica Basal (TMB)
+        let tmb;
+        if (genero === "hombre") {
+            tmb = 88.36 + (13.4 * peso) + (4.8 * altura) - (5.7 * edad);
+        } else {
+            tmb = 447.6 + (9.2 * peso) + (3.1 * altura) - (4.3 * edad);
+        }
+
+        // Calorías según nivel de actividad
+        let calorias = tmb * actividad;
+
+        // Ajuste según el objetivo
+        if (objetivo === "definicion") {
+            calorias *= 0.85;  // Reducir un 15%
+        } else if (objetivo === "volumen") {
+            calorias *= 1.15;  // Aumentar un 15%
+        }
+        
+        // Cálculo de macros
+        const proteinas = peso * 2;  // 2 gramos de proteína por kg de peso
+        const grasas = (calorias * 0.3) / 9;  // 30% de las calorías de grasas, 1 gramo de grasa = 9 calorías
+        const carbohidratos = (calorias - (proteinas * 4) - (grasas * 9)) / 4;  // Calorías restantes para carbohidratos
+
+        // Mostrar los resultados
+        document.getElementById("resultado").innerHTML = `
+            <h2>Tu consumo debería ser:</h2>
+            <p><strong>${Math.round(calorias)}</strong> calorías por día.</p>
+            <p>Proteínas: ${Math.round(proteinas)} gramos al día</p>
+            <p>Carbohidratos: ${Math.round(carbohidratos)} gramos al día</p>
+            <p>Grasas: ${Math.round(grasas)} gramos al día</p>
+        `;
+    }
+    
+</script>
+<!-- Sección de Comentarios -->
+<div class="comments-section" id="contacto">
+    <h2>Deja tu respuesta</h2>
+
+    <!-- Formulario para enviar comentarios -->
+    <div class="comment-form">
+        <label for="commentText">Comentario:</label>
+        <textarea id="commentText" placeholder="Escribe tu comentario aquí" rows="4" required></textarea>
+        
+        <label for="name">Nombre:</label>
+        <input type="text" id="name" placeholder="Escribe tu nombre" required>
+        
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" placeholder="Escribe tu correo electrónico" required>
+
+        <button onclick="publicarComentario()">Publicar el comentario</button>
+    </div>
+
+    <!-- Contenedor donde se mostrarán los comentarios -->
+    <div class="comments-list" id="commentsList">
+        <h3>Comentarios Publicados</h3>
+    </div>
+</div>
+
+<script>
+    // Función para publicar el comentario
+    function publicarComentario() {
+        const commentText = document.getElementById("commentText").value;
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+
+        // Validar que los campos tengan valores
+        if (!commentText || !name || !email) {
+            alert("Por favor, completa todos los campos.");
+            return;
+        }
+
+        // Crear un nuevo elemento de comentario
+        const commentElement = document.createElement("div");
+        commentElement.classList.add("comment");
+        commentElement.innerHTML = `
+            <p><strong>${name}</strong> (${email})</p>
+            <p>${commentText}</p>
+            <hr>
+        `;
+
+        // Agregar el comentario al contenedor de comentarios
+        document.getElementById("commentsList").appendChild(commentElement);
+
+        // Limpiar el formulario después de enviar
+        document.getElementById("commentText").value = "";
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+    }
+</script>
+
+<style>
+    /* Estilo de la sección de comentarios */
+    .comments-section {
+        padding: 50px;
+        background-color: #f5f5f5;
+        max-width: 600px;
+        margin: 40px auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .comments-section h2, .comments-list h3 {
+        color: #801f0e;
+        text-align: center;
+    }
+
+    .comment-form label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .comment-form textarea,
+    .comment-form input[type="text"],
+    .comment-form input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .comment-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #801f0e;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 15px;
+    }
+
+    .comment-form button:hover {
+        background-color: #660000;
+    }
+
+    .comments-list {
+        margin-top: 30px;
+    }
+
+    .comment {
+        background-color: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment p {
+        margin: 0;
+    }
+
+    .comment hr {
+        margin: 10px 0;
+        border: none;
+        border-top: 1px solid #ddd;
+    }
+</style>
+<!-- Sección final de la aplicación -->
+<div class="final-aplicacion">
+    <div class="macrocalc-container">
+        <h2>Calcula tus macros con nosotros</h2>
+        <p>MacroCalc es tu aliado para alcanzar tus objetivos de alimentación y salud. Con nuestra especialización en cálculo de macros, te brindamos un asesoramiento personalizado y preciso para que logres una dieta equilibrada y adecuada a tus necesidades. Basados en la región de Bolivia, Potosí, trabajamos para ayudarte a mejorar tu calidad de vida a través de una nutrición adecuada.</p>
+    </div>
+</div>
+
+<style>
+    /* Estilo para el contenedor final */
+    .final-aplicacion {
+        margin-top: 30px;
+        padding: 0;
+    }
+
+    /* Estilo para la sección de MacroCalc */
+    .macrocalc-container {
+        background-color: #ff4c4c; /* Fondo rojo */
+        color: #ffffff; /* Texto blanco */
+        border: 2px solid #000000; /* Borde negro */
+        padding: 20px;
+        text-align: center;
+        width: 100%; /* Cubre todo el ancho */
+        max-width: 100%; /* Evita que crezca más allá del contenido */
+        font-family: Arial, sans-serif;
+    }
+
+    .macrocalc-container h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .macrocalc-container p {
+        font-size: 1em;
+        margin: 0;
+        line-height: 1.6;
+    }
+</style>
+</body>
+</html>
